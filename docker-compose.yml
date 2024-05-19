@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  slack-app:
+    build: .
+    container_name: slack-app
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+      - MAIN_CHANNEL=${MAIN_CHANNEL}
+      - LOG_CHANNEL=${LOG_CHANNEL}
+      - POWERHOUR_ORG=${POWERHOUR_ORG}
+      - PING_USERGROUP=${PING_USERGROUP}
+      - DEV_USERGROUP=${DEV_USERGROUP}
+      - PORT=3000
+      - PROD=true
+      - DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@postgres:5432/wack-db?schema=public
+      - SHADOW_DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@postgres:5432/wack-db-shadow?schema=public
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: wack-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+
+volumes:
+  postgres-data:
