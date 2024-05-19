@@ -23,7 +23,7 @@ app.command(Commands.STATS, async ({ ack, body, client }) => {
     if (!userData) {
         await client.chat.postEphemeral({
             channel: Environment.MAIN_CHANNEL,
-            text: `❌ You aren't a user yet. Please run \`/hack\` to get started.`,
+            text: `❌ You aren't a user yet. Please run \`/wack\` to get started.`,
             user: userId
         });
         return;
@@ -61,7 +61,7 @@ app.command(Commands.REMINDERS, async ({ ack, body, client }) => {
     if (!userData) {
         await client.chat.postEphemeral({
             channel: Environment.MAIN_CHANNEL,
-            text: `❌ You aren't a user yet. Please run \`/hack\` to get started.`,
+            text: `❌ You aren't a user yet. Please run \`/wack\` to get started.`,
             user: userId
         });
         return;
@@ -135,7 +135,7 @@ hourInterval.attach(async () => {
                      
         await app.client.chat.postMessage({
             channel: user.slackId,
-            text: `🕒 It's ${tzHour} o'clock! Time for your daily hack hour! Run \`/hack\` to get started.`
+            text: `🕒 It's ${tzHour} o'clock! Time for your daily hack hour! Run \`/wack\` to get started.`
         });
     }
 });

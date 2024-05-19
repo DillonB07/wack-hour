@@ -1,3 +1,3 @@
-# Hack Hour Mk. 2
+# Wack Hour
 
-It's going to be crazy y'all!
+It's going to be wacky y'all!

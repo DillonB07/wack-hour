@@ -1,30 +1,26 @@
-import { app, prisma, minuteInterval, hourInterval } from '../app.js';
-import { Commands, Environment } from '../constants.js';
+import {app, prisma, minuteInterval, hourInterval} from '../app.js';
+import {Commands, Environment} from '../constants.js';
 
-import { Callbacks, Views, Actions } from '../views/hackhour.js';
-import { Views as OnboardingViews } from '../views/onboarding.js';
-import { Views as GoalViews } from '../views/goals.js';
-import { Views as PicnicViews } from '../views/picnics.js';
+import {Callbacks, Views, Actions} from '../views/hackhour.js';
+import {Views as OnboardingViews} from '../views/onboarding.js';
+import {Views as GoalViews} from '../views/goals.js';
+import {Views as PicnicViews} from '../views/picnics.js';
 
-import { Templates } from '../utils/message.js';
-import { format, randomChoice } from '../utils/string.js';
-import { reactOnContent } from '../utils/emoji.js';
-import { assertVal } from '../utils/lib.js';
-import { Blocks } from '../views/messages.js';
+import {Templates} from '../utils/message.js';
+import {format, randomChoice} from '../utils/string.js';
+import {reactOnContent} from '../utils/emoji.js';
+import {assertVal} from '../utils/lib.js';
+import {Blocks} from '../views/messages.js';
 
-import { Picnics } from './events/picnics.js';
-import { SlackCommandMiddlewareArgs } from '@slack/bolt';
+import {SlackCommandMiddlewareArgs} from '@slack/bolt';
 
-import { websocketManager } from './api.js';
-
-const powerHour = Picnics.find((picnic) => picnic.ID === "powerhour");
-assertVal(powerHour);
+import {websocketManager} from './api.js';
 
 /**
  * hack
  * The command that starts the hack hour
  */
-const hack = async ({ ack, body }: SlackCommandMiddlewareArgs) => {
+const hack = async ({ack, body}: SlackCommandMiddlewareArgs) => {
     const text: string = body.text;
     const userId: string = body.user_id;
 
@@ -37,13 +33,14 @@ const hack = async ({ ack, body }: SlackCommandMiddlewareArgs) => {
     });
 
     if (!userData) {
+        console.log('no user data')
         await app.client.views.open({
             trigger_id: body.trigger_id,
             view: OnboardingViews.welcome()
         });
         return;
     }
-  
+
     const session = await prisma.session.findFirst({
         where: {
             userId: userId,
@@ -102,10 +99,8 @@ const hack = async ({ ack, body }: SlackCommandMiddlewareArgs) => {
 
         console.log(`🟢 Session started by ${userId}`);
 
-        powerHour.createSession(userId, message.ts);
-
         websocketManager.startSession(userId);
-   
+
         return;
     }
 
@@ -117,13 +112,12 @@ const hack = async ({ ack, body }: SlackCommandMiddlewareArgs) => {
 };
 
 app.command(Commands.HACK, hack);
-app.command(Commands.HACK_ALIAS, hack);
 
 /**
  * start
  * Start the hack hour
  */
-app.view(Callbacks.START, async ({ ack, body, client }) => {
+app.view(Callbacks.START, async ({ack, body, client}) => {
     const userId = body.user.id;
     const task = body.view.state.values.session.session.value;
     const minutes = body.view.state.values.minutes.minutes.value;
@@ -201,7 +195,7 @@ app.view(Callbacks.START, async ({ ack, body, client }) => {
                 time: parseInt(minutes)
             })
         });
-        
+
         assertVal(message.ts);
         await prisma.session.create({
             data: {
@@ -225,7 +219,7 @@ app.view(Callbacks.START, async ({ ack, body, client }) => {
             links.push(line);
         }
     });
-   
+
     reactOnContent(app, {
         content: task,
         channel: Environment.MAIN_CHANNEL,
@@ -234,8 +228,6 @@ app.view(Callbacks.START, async ({ ack, body, client }) => {
 
     console.log(`🟢 Session ${message.ts} started by ${userId}`);
 
-    powerHour.createSession(userId, message.ts);
-
     websocketManager.startSession(userId);
 });
 
@@ -243,7 +235,7 @@ app.view(Callbacks.START, async ({ ack, body, client }) => {
  * goals
  * Open the goals modal
  */
-app.action(Actions.GOALS, async ({ ack, body, client }) => {
+app.action(Actions.GOALS, async ({ack, body, client}) => {
     const userId: string = body.user.id;
     const trigger_id: string = (body as any).trigger_id;
 
@@ -257,7 +249,7 @@ app.action(Actions.GOALS, async ({ ack, body, client }) => {
  * picnics
  * Open the picnics modal
  */
-app.action(Actions.PICNICS, async ({ ack, body, client }) => {
+app.action(Actions.PICNICS, async ({ack, body, client}) => {
     await ack();
 
     await client.views.push({
@@ -270,7 +262,7 @@ app.action(Actions.PICNICS, async ({ ack, body, client }) => {
  * cancel
  * Cancel the hack hour
  */
-app.command(Commands.CANCEL, async ({ ack, body, client }) => {
+app.command(Commands.CANCEL, async ({ack, body, client}) => {
     const userId = body.user_id;
 
     await ack();
@@ -284,7 +276,7 @@ app.command(Commands.CANCEL, async ({ ack, body, client }) => {
     if (!userData) {
         await client.chat.postEphemeral({
             channel: Environment.MAIN_CHANNEL,
-            text: `❌ You aren't a user yet. Please run \`/hack\` to get started.`,
+            text: `❌ You aren't a user yet. Please run \`/wack\` to get started.`,
             user: userId
         });
         return;
@@ -381,7 +373,6 @@ app.command(Commands.CANCEL, async ({ ack, body, client }) => {
             await picnic.cancelSession(session);
         }
     });*/
-    powerHour.cancelSession(session);    
 
     websocketManager.endSession(userId, true);
 });
@@ -484,7 +475,7 @@ minuteInterval.attach(async () => {
             });
 
             console.log(`🏁 Session ${session.messageTs} completed by ${session.userId}`);
-            
+
             /*
             Picnics.forEach(async (picnic) => {
                 if (picnic.ID === session.goal) {
@@ -492,13 +483,11 @@ minuteInterval.attach(async () => {
                 }
             });
             */
-           powerHour.endSession(session);
 
             websocketManager.endSession(session.userId, false);
 
             continue;
-        }
-        else if (session.elapsed % 15 == 0) {
+        } else if (session.elapsed % 15 == 0) {
             // Send a reminder every 15 minutes
             await app.client.chat.postMessage({
                 thread_ts: session.messageTs,
@@ -529,7 +518,7 @@ minuteInterval.attach(async () => {
                 goal: session.goal,
                 task: session.task,
                 time: session.time - session.elapsed
-            })     
+            })
         });
     }
 })

@@ -1,7 +1,7 @@
 {
-  "name": "hackhour",
+  "name": "wack-hour",
   "version": "1.0.0",
-  "description": "",
+  "description": "hack hour but wack",
   "exports": "./src/index.js",
   "scripts": {
     "build": "tsc",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/techpixel/hackhour.git"
+    "url": "git+https://github.com/DillonB07/wack-hour.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/techpixel/hackhour/issues"
+    "url": "https://github.com/DillonB07/wack-hour/issues"
   },
-  "homepage": "https://github.com/techpixel/hackhour#readme",
+  "homepage": "https://github.com/DillonB07/wack-hour#readme",
   "dependencies": {
     "@prisma/client": "^5.12.1",
     "@slack/bolt": "^3.17.1",

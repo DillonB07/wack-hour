@@ -30,14 +30,14 @@ export class Views {
             "blocks": [
                 {
                     "type": "image",
-                    "image_url": "https://cloud-e4np28bw2-hack-club-bot.vercel.app/0img_3415.jpg",
+                    "image_url": "https://cloud-6jii3dlc4-hack-club-bot.vercel.app/0wackhour.png",
                     "alt_text": "welcome banner"
                 },
                 {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "Welcome to *Hack Hour*, brave hacker! It appears you seek something greater - a flexible way to keep on track of your projects, spending an hour (or more) daily doing what you love - *hacking!*"
+                        "text": "Welcome to *Wack Hour*, brave wacker! It appears you seek something greater - ~a flexible way to keep on track of your projects,~ spending an hour (or more) daily doing what you love - *WACKING!*"
                     }
                 }
             ]
@@ -68,7 +68,7 @@ export class Views {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "*Let's set up hack hour.* These options are always modifiable, and you can change them at any time."
+                        "text": "*Let's set up wack hour.* These options are always modifiable, and you can change them at any time."
                     }
                 },
                 {
@@ -121,7 +121,7 @@ export class Views {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "Congrats! :tada:\n*You're ready to use hack hour now!*"
+                        "text": "Congrats! :tada:\n*You're ready to use wack hour now!*"
                     }
                 },
                 {
@@ -135,7 +135,7 @@ export class Views {
                             "elements": [
                                 {
                                     "type": "text",
-                                    "text": "Here's how to use hack hour:\n"
+                                    "text": "Here's how to use wack hour:\n"
                                 }
                             ]
                         },
@@ -150,14 +150,14 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/hack",
+                                            "text": "/wack",
                                             "style": {
                                                 "code": true
                                             }
                                         },
                                         {
                                             "type": "text",
-                                            "text": " - Start a hack hour session."
+                                            "text": " - Start a wack hour session."
                                         }
                                     ]
                                 },
@@ -166,7 +166,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/hack [session]",
+                                            "text": "/wack [session]",
                                             "style": {
                                                 "code": true
                                             }
@@ -182,7 +182,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/cancel",
+                                            "text": "/cancel-wack",
                                             "style": {
                                                 "code": true
                                             }
@@ -215,7 +215,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/mystats",
+                                            "text": "/mywacks",
                                             "style": {
                                                 "code": true
                                             }
@@ -231,7 +231,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/reminders",
+                                            "text": "/reminders-wack",
                                             "style": {
                                                 "code": true
                                             }
@@ -264,7 +264,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "Try making your sessions longer or shorter in the hack hour menu"
+                                            "text": "Try making your sessions longer or shorter in the wack hour menu"
                                         }
                                     ]
                                 },
@@ -273,7 +273,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "Create a goal in the hack hour menu"
+                                            "text": "Create a goal in the wack hour menu"
                                         }
                                     ]
                                 },
@@ -317,7 +317,7 @@ export class Views {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "Congrats! :tada:\n*You're ready to use hack hour now!*"
+                        "text": "Congrats! :tada:\n*You're ready to use wack hour now!*"
                     }
                 },
                 {
@@ -331,7 +331,7 @@ export class Views {
                             "elements": [
                                 {
                                     "type": "text",
-                                    "text": "Here's how to use hack hour:\n"
+                                    "text": "Here's how to use wack hour:\n"
                                 }
                             ]
                         },
@@ -346,14 +346,14 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/hack",
+                                            "text": "/wack",
                                             "style": {
                                                 "code": true
                                             }
                                         },
                                         {
                                             "type": "text",
-                                            "text": " - Start a hack hour session."
+                                            "text": " - Start a wack hour session."
                                         }
                                     ]
                                 },
@@ -362,7 +362,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/hack [session]",
+                                            "text": "/wack [session]",
                                             "style": {
                                                 "code": true
                                             }
@@ -378,7 +378,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/cancel",
+                                            "text": "/cancel-wack",
                                             "style": {
                                                 "code": true
                                             }
@@ -411,7 +411,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/mystats",
+                                            "text": "/mywacks",
                                             "style": {
                                                 "code": true
                                             }
@@ -427,7 +427,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "/reminders",
+                                            "text": "/reminders-wack",
                                             "style": {
                                                 "code": true
                                             }
@@ -460,7 +460,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "Try making your sessions longer or shorter in the hack hour menu"
+                                            "text": "Try making your sessions longer or shorter in the wack hour menu"
                                         }
                                     ]
                                 },
@@ -469,7 +469,7 @@ export class Views {
                                     "elements": [
                                         {
                                             "type": "text",
-                                            "text": "Create a goal in the hack hour menu"
+                                            "text": "Create a goal in the wack hour menu"
                                         }
                                     ]
                                 },

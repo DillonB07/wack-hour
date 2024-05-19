@@ -1,6 +1,6 @@
-import { prisma } from "../app.js";
-import { View } from "@slack/bolt";
-import { Picnics } from "../subroutines/events/picnics.js";
+import {prisma} from "../app.js";
+import {View} from "@slack/bolt";
+import {Picnics} from "../subroutines/events/picnics.js";
 
 export const Callbacks = {
     START: 'start',
@@ -61,7 +61,7 @@ export class Views {
                         "type": "plain_text",
                         "text": "Label",
                         "emoji": true
-                    },                    
+                    },
                     "block_id": "session"
                 },
                 {

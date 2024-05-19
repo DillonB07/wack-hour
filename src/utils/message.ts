@@ -1,7 +1,7 @@
 export const Templates = {
     minutesRemaining: [
         "it looks like <@${userId}> is getting more power this hour! `${minutes}` minutes remaining to work on:",
-        "<@${userId}> is keeping the doctor away with this hack hour! `${minutes}` minutes remaining to work on:",
+        "<@${userId}> is keeping the doctor away with this wack hour! `${minutes}` minutes remaining to work on:",
         "let's go! <@${userId}> has `${minutes}` minutes to work on:"            
     ],   
     completed: [
@@ -29,10 +29,10 @@ export const Templates = {
         "impressive work! just `${minutes}` minutes left <@${userId}>!"
     ],
     cancelled: [
-        "yikes! <@${userId}> cancelled their hack hour!",
-        "i'm really disappointed, but <@${userId}> ended their hack hour.",
+        "yikes! <@${userId}> cancelled their wack hour!",
+        "i'm really disappointed, but <@${userId}> ended their wack hour.",
         "what was I expecting when <@${userId}> aborted their hour early?",
-        "<@${userId}> cancelled their hack hour early.",
+        "<@${userId}> cancelled their wack hour early.",
         "looks like <@${userId}> decided to stop early.",
         "oh no! <@${userId}> cancelled their hour!",
         "it's over for <@${userId}>"

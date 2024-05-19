@@ -49,7 +49,7 @@ export class Views {
                     },
                     "label": {
                         "type": "plain_text",
-                        "text": "What time would you like to be reminded to hack hour?"
+                        "text": "What time would you like to be reminded to wack hour?"
                     },
                     "block_id": "reminder"
                 }
